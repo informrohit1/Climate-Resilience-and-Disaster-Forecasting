@@ -1,0 +1,225 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<style>
+    /* Centering the form and styling form elements */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Grid layout for each form item */
+    .form-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Styling the submit button */
+    .btn-submit {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #45a049;
+    }
+
+    /* Styling error messages */
+    .error-message {
+        color: #d9534f;
+        font-size: 0.875em;
+        grid-column: 2 / 3; /* Align error message below input */
+        margin-top: 5px;
+    }
+
+    /* Styling link to home page */
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
+
+<form action="" method="post">
+    {{form.hidden_tag()}}  <!---passing CSRF TOKEN to the Server---------------->
+    <div class="form-item">
+        {{form.latitude.label}}
+        {{form.latitude}}
+        {%if form.latitude.errors %}
+            {%for error in form.latitude.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.longitude.label}}
+        {{form.longitude}}
+        {%if form.longitude.errors %}
+            {%for error in form.longitude.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.temperature.label}}
+        {{form.temperature}}
+        {%if form.temperature.errors %}
+            {%for error in form.temperature.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.max_temperature.label}}
+        {{form.max_temperature}}
+        {%if form.max_temperature.errors %}
+            {%for error in form.max_temperature.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.min_temperature.label}}
+        {{form.min_temperature}}
+        {%if form.min_temperature.errors %}
+            {%for error in form.min_temperature.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.humidity.label}}
+        {{form.humidity}}
+        {%if form.humidity.errors %}
+            {%for error in form.humidity.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.wind_speed.label}}
+        {{form.wind_speed}}
+        {%if form.wind_speed.errors %}
+            {%for error in form.wind_speed.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.precipitation.label}}
+        {{form.precipitation}}
+        {%if form.precipitation.errors %}
+            {%for error in form.precipitation.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.uv_index.label}}
+        {{form.uv_index}}
+        {%if form.uv_index.errors %}
+            {%for error in form.uv_index.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.year.label}}
+        {{form.year}}
+        {%if form.year.errors %}
+            {%for error in form.year.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.month.label}}
+        {{form.month}}
+        {%if form.month.errors %}
+            {%for error in form.month.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+    <div class="form-item">
+        {{form.day.label}}
+        {{form.day}}
+        {%if form.day.errors %}
+            {%for error in form.day.errors %}
+                <div>{{error}}</div>
+            {%endfor%}
+        {%endif%}
+    </div>
+    <br>
+
+    
+
+
+    
+    <div>
+        {{form.submit(class="btn-submit")}}
+    </div>
+    <br>
+    <div>
+        {{output}}
+    </div>
+    <br>
+    <div>
+        <p>want to go to Home page? <a href="{{url_for('home')}}">Home</a></p>
+    </div>
+</form>
+
+{% endblock content %}
