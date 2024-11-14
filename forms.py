@@ -10,7 +10,7 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired,NumberRange
 
-X_data = pd.read_csv("notebooks\dataCleaning\data.csv")
+X_data = pd.read_csv("notebooks/data.csv")
 
 class InputForm(FlaskForm):
     latitude = FloatField(  
