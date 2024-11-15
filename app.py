@@ -37,7 +37,7 @@ def predict():
         if prediction == 0:
             message = "Their is High chance of DROUGHT"
         elif prediction == 1:
-            message = "Their is High Chnace of EarthQuake"
+            message = "Their is High Chance of EarthQuake"
         elif prediction == 2:
             message = "Their is High Chance of Eruption"
         elif prediction == 3:
@@ -45,20 +45,20 @@ def predict():
         elif prediction == 4:
             message = "Their is High Chance of Hurricane"
         elif prediction == 5:
-            message = "Their is High Chnace of Snow Storm"
+            message = "Their is High Chance of Snow Storm"
         elif prediction == 6:
-            message = "Their is High chance of Tropical Cyclone"
+            message = "Their is High Chance of Tropical Cyclone"
         elif prediction == 7:
             message = "Their is High Chance of Tornado"
         elif prediction == 8:
-            message = "Their is High Chnace of Volcanic Outbreak"
+            message = "Their is High Chance of Volcanic Outbreak"
         else:
             message = "Their is High Chance of Wild Fire"
 
     else:
         message = "Please Provide Valid Input Details!"
 
-    return render_template("predict.html", title="Prediction",form=form, output=message)
+    return render_template("predict.html", title="Prediction Page",form=form, output=message)
 
 
 
