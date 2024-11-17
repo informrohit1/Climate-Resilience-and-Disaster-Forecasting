@@ -13,6 +13,12 @@ from wtforms.validators import DataRequired,NumberRange
 X_data = pd.read_csv("notebooks/data.csv")
 
 class InputForm(FlaskForm):
+    date = DateField(
+        label="Select Date",
+        validators=[DataRequired()],
+        format="%Y-%m-%d",  # Ensure the date format is consistent
+        render_kw={"class": "form-control"}
+    )
     latitude = FloatField(  
         label='Latitude',
         validators =[DataRequired()] 
@@ -49,20 +55,13 @@ class InputForm(FlaskForm):
         label='UV Index',
         validators =[DataRequired()]
     )
-    year = IntegerField(
-        label='Year',
-        validators =[DataRequired()]
-    )
-    month = IntegerField(
-        label='Month',
-        validators =[DataRequired(),NumberRange(min=1, max=12, message="Month must be between 1 and 12")
-        ]
-    )
-    day = IntegerField(
-        label='Day',
-        validators =[DataRequired(),NumberRange(min=1, max=31, message="day must be between 1 and 31")
-        ]
-    )
+
+    
+    # year = IntegerField(
+    #     label='Year',
+    #     validators =[DataRequired()]
+    # )
+    
 
     
     submit = SubmitField('Submit')

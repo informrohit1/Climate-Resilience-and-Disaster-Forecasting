@@ -84,6 +84,18 @@
 <form action="" method="post">
     <h3>Please Enter Details of Climatic Conditions </h3>
     {{form.hidden_tag()}}  <!---passing CSRF TOKEN to the Server---------------->
+
+    <div class="form-item">
+        {{ form.date.label }}
+        {{ form.date }}
+        {% if form.date.errors %}
+            {% for error in form.date.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
     <div class="form-item">
         {{form.latitude.label}}
         {{form.latitude}}
@@ -174,36 +186,7 @@
         {%endif%}
     </div>
     <br>
-    <div class="form-item">
-        {{form.year.label}}
-        {{form.year}}
-        {%if form.year.errors %}
-            {%for error in form.year.errors %}
-                <div>{{error}}</div>
-            {%endfor%}
-        {%endif%}
-    </div>
-    <br>
-    <div class="form-item">
-        {{form.month.label}}
-        {{form.month}}
-        {%if form.month.errors %}
-            {%for error in form.month.errors %}
-                <div>{{error}}</div>
-            {%endfor%}
-        {%endif%}
-    </div>
-    <br>
-    <div class="form-item">
-        {{form.day.label}}
-        {{form.day}}
-        {%if form.day.errors %}
-            {%for error in form.day.errors %}
-                <div>{{error}}</div>
-            {%endfor%}
-        {%endif%}
-    </div>
-    <br>
+    
 
     
 

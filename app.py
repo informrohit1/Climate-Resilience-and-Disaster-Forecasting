@@ -1,5 +1,5 @@
-from flask import Flask, url_for,render_template
-from forms import InputForm
+from flask import Flask, url_for,render_template,request
+from forms import InputForm 
 import pandas as pd
 import joblib
 import sklearn
@@ -14,23 +14,29 @@ model = joblib.load("model.joblib")
 def home():
     return render_template("home.html", title="Home")
 
-@app.route("/predict", methods=["GET","POST"])
+@app.route("/predict", methods=["GET", "POST"])
 def predict():
     form = InputForm()
     if form.validate_on_submit():
+        # Extract selected date
+        selected_date = form.date.data
+        year = selected_date.year
+        month = selected_date.month
+        day = selected_date.day
+
         X_new = pd.DataFrame(dict(
-            latitude = [form.latitude.data],
-            longitude = [form.longitude.data],
-            temperature = [form.temperature.data],
-            max_temperature = [form.max_temperature.data],
-            min_temperatude = [form.min_temperature.data],
-            humidity = [form.humidity.data],
-            wind_speed = [form.wind_speed.data],
-            precipitation = [form.precipitation.data],
-            uv_index = [form.uv_index.data],
-            year = [form.year.data],
-            month = [form.month.data],
-            day = [form.day.data]
+            latitude=[form.latitude.data],
+            longitude=[form.longitude.data],
+            temperature=[form.temperature.data],
+            max_temperature=[form.max_temperature.data],
+            min_temperatude=[form.min_temperature.data],
+            humidity=[form.humidity.data],
+            wind_speed=[form.wind_speed.data],
+            precipitation=[form.precipitation.data],
+            uv_index=[form.uv_index.data],
+            year=[year],  # Use extracted year
+            month=[month],  # Use extracted month
+            day=[day]  # Use extracted day
         ))
 
         prediction = model.predict(X_new)[0]
