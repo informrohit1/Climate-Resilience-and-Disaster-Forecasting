@@ -1,98 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
 
-    <style>
-        /* Basic reset */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100%;
-        }
+  <style>
+    /* Basic reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+    }
 
-        /* Setting up the container for the entire page */
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            background-color: #f4f4f9;
-        }
+    /* Container for the entire page with subtle gradient */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    }
 
-        /* Styling for the heading */
-        h1 {
-            text-align: center;
-            margin-top: 5px;
-            margin-bottom: 1px;
-            font-size: 2.2em;
-            color: blue;
-        }
+    /* Page heading */
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 2.4em;
+      color: #2c3e50;
+    }
 
-        /* Flash message styling */
-        .flash-messages {
-            background-color: blue;
-            color: #721c24;
-            padding: 10px;
-            border: 1px solid #f5c6cb;
-            border-radius: 4px;
-            margin: 10px auto;
-            width: 90%;
-            max-width: 600px;
-        }
+    .flash-messages {
+      background-color: #f2dede;
+      color: #a94442;
+      padding: 10px;
+      border: 1px solid #ebccd1;
+      border-radius: 4px;
+      margin: 10px auto;
+      width: 90%;
+      max-width: 600px;
+    }
 
-        /* Content block styling */
-        .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-            text-align: center;
-            padding: 20px;
-        }
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-grow: 1;
+      text-align: center;
+      padding: 20px;
+    }
 
-        /* Aligning content inside the block */
-        .content > div {
-            width: 100%;
-            max-width: 800px;
-        }
+    .content > div {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        /* Optional link styling */
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the {{title}}!</h1>
+  <div class="container">
+    <h1>Welcome to the {{ title }}!</h1>
 
-        <!-- Flash Messages -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flash-messages">
-                    {% for message in messages %}
-                        <div>{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
-        <!-- Content Block -->
-        <div class="content">
-            {% block content %}
-            {% endblock %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div>{{ message }}</div>
+          {% endfor %}
         </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="content">
+      <div>
+        {% block content %}
+        {% endblock %}
+      </div>
     </div>
-    
+  </div>
 </body>
 </html>

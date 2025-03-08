@@ -1,43 +1,42 @@
 {% extends 'layout.html' %}
-
 {% block content %}
 
 <style>
-    /* Center-align all items */
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 80vh;
-        text-align: center;
-    }
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    text-align: center;
+  }
 
-    /* Style the button */
-    a {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 18px;
-        color: #fff;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        margin-top: 20px;
-    }
+  .home-container h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
 
-    /* Hover effect */
-    a:hover {
-        background-color: #45a049;
-    }
+  .home-container a {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .home-container a:hover {
+    background-color: #2980b9;
+  }
 </style>
 
-
-<div>
-    <h3>Climate Conditions and Disaster Forecasting </h3>
-    <a href="{{url_for("predict")}}">Click Here!</a>
+<div class="home-container">
+  <h3>Climate Conditions and Disaster Forecasting</h3>
+  <a href="{{ url_for('predict') }}">Go to Prediction Page</a>
 </div>
-
 
 {% endblock content %}
